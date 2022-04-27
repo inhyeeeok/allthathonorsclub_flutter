@@ -1,4 +1,4 @@
-# allthathonorsclub_demo1
+# allthathonorsclub demo Project
 
 A new Flutter project.
 
