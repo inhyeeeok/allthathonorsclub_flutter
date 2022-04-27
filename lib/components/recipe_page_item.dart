@@ -8,34 +8,22 @@ class RecipePageItem extends StatelessWidget {
   // final String title;
 
   final classData;
-  const RecipePageItem(this.classData);
+  final lang;
+  final pageIndex;
+  const RecipePageItem(this.classData, this.lang, this.pageIndex);
 
   //const RecipePageItem(this.imageName, this.title);
 
   @override
   Widget build(BuildContext context) {
-    print("Test1");
-    print(this.classData);
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 20),
-       // child: ListView(
-       //   children: [
-       //     RecipeMenu(),
-       //     ListView.builder(
-       //     itemCount : classData.length,
-       //         itemBuilder : (BuildContext context, int index){
-       //           return Container(
-       //             child: RecipeListItem(classData[index]),
-       //           );
-       //         }
-       //   )
-       //   ],
 
       child: ListView.builder(
         itemCount : classData.length + 1,
         itemBuilder : (BuildContext context, int index){
-          if(index ==0) return RecipeMenu();
+          if(index ==0) return RecipeMenu(lang, pageIndex);
           return Container(
             child: RecipeListItem(classData[index-1]),
           );

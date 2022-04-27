@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:allthathonorsclub_demo1/pages/recipe_page.dart';
+import 'package:allthathonorsclub_demo1/pages/main_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "PatuaOne"),
-      home: RecipePage(),
+      home: MainPage(),
     );
   }
 }

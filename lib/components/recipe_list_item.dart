@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart'; // 패키지
+
 
 class RecipeListItem extends StatelessWidget {
    // final String imageName;
@@ -12,25 +14,30 @@ class RecipeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(classData);
     final String imageName = classData['img'];            //이미지 경로
     final String description = classData['description'];
     final String title = classData['item'];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      // padding: const EdgeInsets.symmetric(vertical: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AspectRatio(
-            aspectRatio: 2 / 1,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.asset(
-                "assets/images/$imageName",
-                fit: BoxFit.cover,
+          InkWell(
+            child: AspectRatio(
+              aspectRatio: 2 / 1,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  "assets/images/$imageName",
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
+            onTap: () {
+              launchURL(classData['url']);
+            },
           ),
           SizedBox(height: 10),
           Text(
@@ -45,5 +52,13 @@ class RecipeListItem extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void launchURL(url) async {
+    if (await canLaunch(url)) {
+      await launch(url);
+    }else {
+      throw '$url';
+    }
   }
 }
