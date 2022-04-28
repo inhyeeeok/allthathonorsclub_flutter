@@ -1,6 +1,6 @@
 # allthathonorsclub demo Project
 
-A new Flutter project.
+올댓아너스클럽의 여행의전서비스 앱 
 
 ## Getting Started
 
