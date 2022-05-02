@@ -119,7 +119,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             title: "아너스 컨시어지 서비스\n(온라인)",
             body:
                 "멀리 떨어져 살거나 바쁜 업무로 부모님을 자주 찾아 뵙지 못하는 자녀분들의 마음의 불편함과 애로 사항을 해결해드리고자 합니다.",
-            image: _buildFullscreenImage('images/sample/101.jpg'),
+            image: _buildFullscreenImage('images/sample/1.jpg'),
             decoration: pageDecoration.copyWith(
               contentMargin: const EdgeInsets.symmetric(horizontal: 16),
               fullScreen: true,
@@ -133,7 +133,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           title: "아너스 동행 서비스\n(오프라인)",
           body:
               "고객님의 지인, 가족, 친구분들과 즐기고 싶은 맛집, 미술관, 추억의 장소, 근교 멋진 카페 등 원하시는 그 곳에 아름다운 동행을 함께 하겠습니다.",
-          image: _buildFullscreenImage('images/sample/102.jpg'),
+          image: _buildFullscreenImage('images/sample/2.jpg'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -177,7 +177,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           //       _buildElevatedButton('Foreigner'),
           //     ],
           //   ),
-          image: _buildImage('images/sample/104.jpg'),
+          image: _buildImage('images/sample/4.jpg'),
           footer: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
