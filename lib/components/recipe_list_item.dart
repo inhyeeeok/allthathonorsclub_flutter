@@ -3,14 +3,9 @@ import 'package:url_launcher/url_launcher.dart'; // 패키지
 
 
 class RecipeListItem extends StatelessWidget {
-   // final String imageName;
-  // final String title;
 
   final classData;
   const RecipeListItem(this.classData);
-
-
-  //const RecipeListItem(this.imageName, this.title);
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +24,12 @@ class RecipeListItem extends StatelessWidget {
               aspectRatio: 2 / 1,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  "assets/images/$imageName",
+                // child: Image.asset(
+                //   "assets/images/$imageName",
+                //   fit: BoxFit.cover,
+                // ),
+                child: Image.network(
+                  "https://picsum.photos/250?image=9",
                   fit: BoxFit.cover,
                 ),
               ),

@@ -1,9 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:allthathonorsclub_demo1/components/recipe_list_item.dart';
 import 'package:allthathonorsclub_demo1/components/recipe_page_item.dart';
-import 'package:allthathonorsclub_demo1/components/recipe_menu.dart';
-import 'package:allthathonorsclub_demo1/components/recipe_title.dart';
 
 class RecipePage extends StatelessWidget {
 
@@ -29,6 +26,7 @@ class RecipePage extends StatelessWidget {
              RecipePageItem(classification("여행"), lang, '여행'),
              RecipePageItem(classification("편의"), lang, '편의'),
              RecipePageItem(classification("지도"), lang, '지도'),
+             RecipePageItem(classification("기타"), lang, '기타'),
           ],
         ),
       ),
@@ -36,13 +34,12 @@ class RecipePage extends StatelessWidget {
   }
 
   classification(data) {
-    var returnData = [];
+    List<Map<String, String>> returnData = [];
 
-    for (int i = 0; i < classData.length; i++) {
-      if(classData[i]["kinds"] == data){
-        returnData.add(classData[i]);
-      }
-    }
+    classData.forEach((i) {
+      if(i["kinds"] == data){ returnData.add(i); }
+    });
+
     return returnData;
   }
   

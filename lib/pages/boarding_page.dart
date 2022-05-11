@@ -1,11 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:allthathonorsclub_demo1/data/data_page.dart';
 import 'package:allthathonorsclub_demo1/pages/recipe_page.dart';
-
-import 'main_page.dart';
 
 class OnBoardingPage extends StatefulWidget {
   @override
@@ -15,14 +12,27 @@ class OnBoardingPage extends StatefulWidget {
 class _OnBoardingPageState extends State<OnBoardingPage> {
   final introKey = GlobalKey<IntroductionScreenState>();
 
-  void _onIntroEnd(context, String kind) {
-    var data = new DataPage();
-    List<Map<String, String>> lang =
-        kind == '내국인' ? data.menuMapKR : data.menuMapEN;
+  void _onIntroEnd(context, String kind) async {
+    final getMenuData =
+        FirebaseFirestore.instance.collection("allthathonorsclub").doc("menu");
+    final data = await getMenuData.get();
+
+    List<Map<String, String>> classData =
+        kind == '내국인' ? makeDataSet(data['kr']) : makeDataSet(data['en']);
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => RecipePage(lang, kind)),
+      MaterialPageRoute(builder: (_) => RecipePage(classData, kind)),
     );
+  }
+
+  makeDataSet(toBeData) {
+    List<Map<String, String>> returnData = [];
+
+    toBeData.forEach((i) {
+      returnData.add(Map<String, String>.from(i));
+    });
+
+    return returnData;
   }
 
   Widget _buildFullscreenImage(String assetName) {
@@ -74,7 +84,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     );
 
     const coverDecoration = const PageDecoration(
-      titleTextStyle: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700, color: Colors.black),
+      titleTextStyle: TextStyle(
+          fontSize: 28.0, fontWeight: FontWeight.w700, color: Colors.black),
       bodyTextStyle: coverBodyStyle,
       bodyPadding: EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
       pageColor: Colors.lightGreen,
