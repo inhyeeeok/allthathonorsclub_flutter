@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:allthathonorsclub_demo1/components/recipe_page_item.dart';
 
@@ -16,6 +15,7 @@ class RecipePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _buildRecipeAppBar(lang),
+      drawer: _buildRecipeEndDrawer(lang),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: PageView(
@@ -41,6 +41,45 @@ class RecipePage extends StatelessWidget {
     });
 
     return returnData;
+  }
+
+   Drawer _buildRecipeEndDrawer(String lang) {
+    var title = (lang=='내국인')?'올댓아너스 클럽':'HONORS CLUB';
+
+    return Drawer(
+      child: ListView(
+        children: [
+          Container(
+            height: 65,
+            child: DrawerHeader(
+              decoration: BoxDecoration(color: Colors.lightGreen),
+              child: Text(title,
+                style: TextStyle(color: Colors.white70, fontSize: 20,
+                    fontWeight: FontWeight.bold)
+              ),
+            ),
+          ),
+          ListTile(
+            title: const Text('언어 전환'),
+            onTap: () {
+
+            },
+          ),
+          ListTile(
+            title: const Text('관리자'),
+            onTap: () {
+
+            },
+          ),
+          ListTile(
+            title: const Text('앱 버전'),
+            onTap: () {
+
+            },
+          ),
+        ],
+      ),
+    );
   }
   
   AppBar _buildRecipeAppBar(String lang) {

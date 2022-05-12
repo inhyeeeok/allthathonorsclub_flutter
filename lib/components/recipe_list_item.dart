@@ -13,6 +13,8 @@ class RecipeListItem extends StatelessWidget {
     final String description = classData['description'];
     final String title = classData['item'];
 
+
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10),
       // padding: const EdgeInsets.symmetric(vertical: 20),
@@ -29,7 +31,7 @@ class RecipeListItem extends StatelessWidget {
                 //   fit: BoxFit.cover,
                 // ),
                 child: Image.network(
-                  "https://picsum.photos/250?image=9",
+                  imageName,
                   fit: BoxFit.cover,
                 ),
               ),
