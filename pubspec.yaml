@@ -51,6 +51,7 @@ flutter:
     - assets/images/group/
     - assets/images/logo/
     - assets/images/sample/
+    - assets/images/menu/
   fonts:
       - family: PatuaOne
         fonts:

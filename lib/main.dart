@@ -1,4 +1,5 @@
 import 'package:allthathonorsclub_demo1/pages/boarding_page.dart';
+import 'package:allthathonorsclub_demo1/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
       title: 'allthathonors',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: "PatuaOne"),
-      home: OnBoardingPage(),
+      // home: OnBoardingPage(),
+      home: MainPage(),
     );
   }
 }
