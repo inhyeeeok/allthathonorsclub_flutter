@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 
 class RecipeMenu extends StatelessWidget {
   final lang;
-  final index;
+  final krIndex;
 
-  RecipeMenu(this.lang, this.index);
+  RecipeMenu(this.lang, this.krIndex);
 
   @override
   Widget build(BuildContext context) {
-    // final List<Map<String, String>> menuList = [{'icon':'Icons.airplane_ticket', "menu":"항공"}, {"icon":'Icons.tour_rounded', "menu":"여행"}];
-    //  print(menuList[0]);
-    //  print(menuList[0]['menu']);
 
     if (lang == '내국인') {
       return Padding(
@@ -21,15 +18,15 @@ class RecipeMenu extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 위젯 사이 공간 동일하게 만들기
               children: [
-                  _buildMenuItem('assets/images/menu/icon_menu_trip.png', '여행', index),
+                  _buildMenuItem('assets/images/menu/icon_menu_trip.png', '여행', krIndex),
                   SizedBox(width: 5),
-                  _buildMenuItem('assets/images/menu/icon_menu_trans.png', '교통', index),
+                  _buildMenuItem('assets/images/menu/icon_menu_trans.png', '교통', krIndex),
                   SizedBox(width: 5),
-                  _buildMenuItem('assets/images/menu/icon_menu_info.png', '생활정보', index),
+                  _buildMenuItem('assets/images/menu/icon_menu_info.png', '생활정보', krIndex),
                   SizedBox(width: 5),
-                  _buildMenuItem('assets/images/menu/icon_menu_news.png', '뉴스', index),
+                  _buildMenuItem('assets/images/menu/icon_menu_news.png', '뉴스', krIndex),
                   SizedBox(width: 5),
-                  _buildMenuItem('assets/images/menu/icon_menu_shopping.png', '쇼핑', index),
+                  _buildMenuItem('assets/images/menu/icon_menu_shopping.png', '쇼핑', krIndex),
               ],
             ),
             // SizedBox(height: 10,),
@@ -49,7 +46,7 @@ class RecipeMenu extends StatelessWidget {
         ),
       );
     } else {
-      var enIndex = transKrToEn(index);
+      var enIndex = transKrToEn(krIndex);
       return Padding(
         padding: const EdgeInsets.only(top: 10),
         child: Row(
@@ -92,15 +89,27 @@ class RecipeMenu extends StatelessWidget {
           // ] else ...[
           //
           // ],
-          Image(
-            image: AssetImage(mIcon),
-            fit: BoxFit.fitHeight,
+          Container(
+            child:
+            InkWell(
+              child: Image(
+                image: AssetImage(mIcon),
+                fit: BoxFit.fitHeight,
+              ),
+              onTap: () {
+               print('test');
+              },
+            ),
           ),
-          // SizedBox(height: 5),
-          Text(
-            text,
-            style: TextStyle(color: Colors.black87),
-          ),
+          // Image(
+          //   image: AssetImage(mIcon),
+          //   fit: BoxFit.fitHeight,
+          // ),
+          // // SizedBox(height: 5),
+          // Text(
+          //   text,
+          //   style: TextStyle(color: Colors.black87),
+          // ),
         ],
       ),
     );

@@ -24,16 +24,16 @@ class RecipeListItem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               // 위젯 사이 공간 동일하게 만들기
               children: [
-                _buildMenuItem(classData[i]['img'], classData[i]['item'], classData[0]['url'], context),
+                _buildMenuItem(classData[i]['img'], classData[i]['item'], classData[i]['url'], context),
                 SizedBox(width: 5, height: 120),
                 if (i + 1 < classData.length) ...[
-                  _buildMenuItem(classData[i + 1]['img'], classData[i + 1]['item'], classData[0]['url'], context),
+                  _buildMenuItem(classData[i + 1]['img'], classData[i + 1]['item'], classData[i + 1]['url'], context),
                   SizedBox(width: 5, height: 120),
                 ] else ...[
                   SizedBox(width: MediaQuery.of(context).size.width*0.2, height: 120),
                 ],
                 if (i + 2 < classData.length) ...[
-                  _buildMenuItem(classData[i + 2]['img'], classData[i + 2]['item'], classData[0]['url'], context),
+                  _buildMenuItem(classData[i + 2]['img'], classData[i + 2]['item'], classData[i + 2]['url'], context),
                   SizedBox(width: 5, height: 120),
                 ] else ...[
                   SizedBox(width: 100, height: 120),
@@ -89,7 +89,7 @@ class RecipeListItem extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                launchURL("https://www.naver.com");
+                launchURL(url);
               },
             ),
           ),

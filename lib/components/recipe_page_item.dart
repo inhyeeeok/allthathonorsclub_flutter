@@ -76,14 +76,4 @@ class RecipePageItem extends StatelessWidget {
           }),
     );
   }
-
-  // classification(data) {
-  //   List<Map<String, String>> returnData = [];
-  //   classData.forEach((i) {
-  //     if (i["kinds"] == data) {
-  //       returnData.add(i);
-  //     }
-  //   });
-  //   return returnData;
-  // }
 }

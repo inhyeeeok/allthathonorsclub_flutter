@@ -20,11 +20,23 @@ class _MainPageState extends State<MainPage> {
 
   makeDataSet(toBeData) {
     List<Map<String, String>> returnData = [];
-    toBeData.forEach((i) {
-      returnData.add(Map<String, String>.from(i));
-    });
 
-    return returnData;
+
+    Map<String, dynamic> returnData1 = Map<String, dynamic>.from(toBeData);
+    // print(returnData1);
+    // print(toBeData);
+    // toBeData["여행"].forEach((i) {
+    //   returnData.add(Map<String, String>.from(i));
+    // });
+    // print(List<Map<String, List<Map<String, String>>>>.from(toBeData));
+
+    // for(var i=0; i <returnData1.length; i++) {
+    //   print(i);
+    //   print(returnData1[i]);
+    // }
+
+    // print(returnData);
+    return returnData1;
   }
 
   Widget makeButton(String assetName) {
@@ -36,7 +48,7 @@ class _MainPageState extends State<MainPage> {
           FirebaseFirestore.instance.collection("allthathonorsclub").doc("menu");
           final data = await getMenuData.get();
 
-          List<Map<String, String>> classData = assetName == '내국인'
+          Map<String, dynamic> classData = assetName == '내국인'
               ? makeDataSet(data['kr'])
               : makeDataSet(data['en']);
           Navigator.push(

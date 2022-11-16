@@ -149,48 +149,18 @@ class RecipePage extends StatelessWidget {
   classification(data) {
     List<Map<String, String>> returnData = [];
 
-    classData.forEach((i) {
-      if (i["kinds"] == data) {
-        returnData.add(i);
-      }
-    });
+    // classData[data].forEach((i) {
+    //   if (i["kinds"] == data) {
+    //     returnData.add(i);
+    //   }
+    // });
+
+    for(var i=0; i <classData[data].length; i++) {
+      returnData.add(Map<String, String>.from(classData[data][i]));
+    }
 
     return returnData;
   }
-
-  // Drawer _buildRecipeEndDrawer(String lang) {
-  //   var title = (lang == '내국인') ? '올댓아너스 클럽' : 'HONORS CLUB';
-  //
-  //   return Drawer(
-  //     child: ListView(
-  //       children: [
-  //         Container(
-  //           height: 65,
-  //           child: DrawerHeader(
-  //             decoration: BoxDecoration(color: Colors.lightGreen),
-  //             child: Text(title,
-  //                 style: TextStyle(
-  //                     color: Colors.white70,
-  //                     fontSize: 20,
-  //                     fontWeight: FontWeight.bold)),
-  //           ),
-  //         ),
-  //         ListTile(
-  //           title: const Text('언어 전환'),
-  //           onTap: () {},
-  //         ),
-  //         ListTile(
-  //           title: const Text('관리자'),
-  //           onTap: () {},
-  //         ),
-  //         ListTile(
-  //           title: const Text('앱 버전'),
-  //           onTap: () {},
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   AppBar _buildRecipeAppBar(String lang) {
     var title = (lang == '내국인') ? '올댓 아너스 클럽' : 'All that Honors Club';
