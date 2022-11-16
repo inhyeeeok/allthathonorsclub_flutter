@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "618316770894",
-    "project_id": "allthathonorsclub",
-    "storage_bucket": "allthathonorsclub.appspot.com"
+    "project_number": "718435762098",
+    "project_id": "allthathonorsclub-6357e",
+    "storage_bucket": "allthathonorsclub-6357e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:618316770894:android:6c56cfeec2af7471441d1f",
+        "mobilesdk_app_id": "1:718435762098:android:18546f1a2af3c05595aeab",
         "android_client_info": {
           "package_name": "com.example.allthathonorsclub_demo1"
         }
       },
       "oauth_client": [
         {
-          "client_id": "618316770894-51f1nh5jq60bdv7d591k8sph6qofdh9d.apps.googleusercontent.com",
+          "client_id": "718435762098-ug2ii5952ouhog9i82it9ksrmq604fa7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBqRbGG30qucNlem19y7tNBl4dkCsSD1Fw"
+          "current_key": "AIzaSyD2HWIQ-5ss2qxAN2C0I730-JXuarrVqM8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "618316770894-51f1nh5jq60bdv7d591k8sph6qofdh9d.apps.googleusercontent.com",
+              "client_id": "718435762098-ug2ii5952ouhog9i82it9ksrmq604fa7.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "718435762098-0tbeas3n9fv1dhm0eaii796i2i28fc5m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.allthathonorsclubDemo1"
+              }
             }
           ]
         }
