@@ -7,6 +7,42 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:718435762098:android:04183d282a9d529595aeab",
+        "android_client_info": {
+          "package_name": "com.athc.allthathonorsclub_demo1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718435762098-ug2ii5952ouhog9i82it9ksrmq604fa7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2HWIQ-5ss2qxAN2C0I730-JXuarrVqM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718435762098-ug2ii5952ouhog9i82it9ksrmq604fa7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "718435762098-0tbeas3n9fv1dhm0eaii796i2i28fc5m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.allthathonorsclubDemo1"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:718435762098:android:18546f1a2af3c05595aeab",
         "android_client_info": {
           "package_name": "com.example.allthathonorsclub_demo1"
