@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.allthathonorsclub_demo1">
    <application
-        android:label="allthathonorsclub_demo1"
+        android:label="올댓아너스클럽"
         android:icon="@mipmap/ic_launcher">
         <activity
-            android:name=".MainActivity"
+            android:name="com.athc.allthathonorsclub_demo1.MainActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
