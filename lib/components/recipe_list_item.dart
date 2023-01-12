@@ -9,9 +9,6 @@ class RecipeListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final String imageName = classData['img'];            //이미지 경로
-    // final String description = classData['description'];
-    // final String title = classData['item'];
 
     return Container(
       margin: const EdgeInsets.only(left: 15, top: 10),
@@ -41,20 +38,6 @@ class RecipeListItem extends StatelessWidget {
               ],
             ),
           ]
-
-
-          // Row(
-          //    mainAxisAlignment: MainAxisAlignment.spaceEvenly, // 위젯 사이 공간 동일하게 만들기
-          //    children: [
-          //      _buildMenuItem(imageName, title, '여행'),
-          //      SizedBox(width: 5),
-          //      _buildMenuItem(imageName, '교통', '여행'),
-          //      SizedBox(width: 5),
-          //      _buildMenuItem(imageName, '생활정보', '여행'),
-          //      SizedBox(width: 5),
-          //    ],
-          //  ),
-
          ],
       ),
     );
@@ -103,22 +86,6 @@ class RecipeListItem extends StatelessWidget {
                   textAlign: TextAlign.center),
             )
           ),
-          // if (param == text) ...[
-          //
-          // ] else ...[
-          //
-          // ],
-
-          // Padding(
-          //   padding: const EdgeInsets.only(top: 10),
-          //   child: Text(text,
-          //       style: TextStyle(color: Colors.black87),
-          //       textAlign: TextAlign.center),
-          // )
-          // Text(
-          //   text,
-          //   style: TextStyle(color: Colors.black87),
-          // ),
         ],
       ),
     );
@@ -131,4 +98,5 @@ class RecipeListItem extends StatelessWidget {
       throw '$url';
     }
   }
+
 }

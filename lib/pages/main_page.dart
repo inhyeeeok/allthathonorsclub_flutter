@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:allthathonorsclub_demo1/pages/recipe_page.dart';
+import 'package:allthathonorsclub_demo1/pages/recipe_Page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart'; // 패키지
 
@@ -54,7 +54,8 @@ class _MainPageState extends State<MainPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => RecipePage(classData, assetName)),
+                // settings : const RouteSettings(name: 'MainPage'),
+                builder: (context) => RecipePage(classData, assetName, '여행')),
           );
         },
         style: ButtonStyle(
@@ -121,30 +122,6 @@ class _MainPageState extends State<MainPage> {
                   ),
                   textAlign: TextAlign.left,
                 ),
-                // child: Text.rich(
-                //   TextSpan(
-                //     text: '',
-                //       children: <TextSpan>[
-                //         TextSpan(text :'아너스클럽에서는 액티브시니어분들과 \n외국인관광객들을 위해 당사에서 특별 제작한 \n맞춤형 이지라이프 앱을 제공해 드림으로써 \n생활의 편리함을 더해드리고자 합니다.',
-                //           style: TextStyle(
-                //             // fontWeight: FontWeight.bold,
-                //             fontSize: 17,
-                //             color: Colors.white,
-                //           )
-                //         ),
-                //
-                //         TextSpan(text :'\n\nAll that honors club 홈페이지 바로가기 ->',
-                //             style: TextStyle(
-                //               // fontWeight: FontWeight.bold,
-                //               fontSize: 17,
-                //               color: Colors.white,
-                //               backgroundColor: Colors.black,
-                //             )
-                //         )
-                //       ]
-                //   )
-                // ),
-
               ),
             ),
             Container(

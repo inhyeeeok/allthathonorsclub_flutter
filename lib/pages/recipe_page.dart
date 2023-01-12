@@ -1,165 +1,177 @@
 import 'package:flutter/material.dart';
 import 'package:allthathonorsclub_demo1/components/recipe_page_item.dart';
 
-import '../components/recipe_list_item.dart';
+import '../components/recipe_gridview_item.dart';
 import '../components/recipe_menu.dart';
+import '../components/recipe_tabbar.dart';
 
-class RecipePage extends StatelessWidget {
+class RecipePage extends StatefulWidget {
+  final classData1;
+  final lang1;
+  final menuIndex1;
+
+  RecipePage(this.classData1, this.lang1, this.menuIndex1);
+
+  @override
+  _TabPage createState() => _TabPage(classData1, lang1, menuIndex1);
+}
+
+class _TabPage extends State<RecipePage> with TickerProviderStateMixin {
   final classData;
   final lang;
+  final menuIndex;
 
-  RecipePage(this.classData, this.lang);
+  _TabPage(this.classData, this.lang, this.menuIndex);
+
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    _tabController = TabController(length: 5, vsync: this);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final PageController controller =
-        PageController(initialPage: 0, viewportFraction: 1);
 
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(235, 241, 243, 1.0),
+      // backgroundColor: const Color.fromRGBO(235, 241, 243, 1.0),
+      backgroundColor: Colors.white,
       appBar: _buildRecipeAppBar(lang),
-      // drawer: _buildRecipeEndDrawer(lang),
-      body:
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0),
-        child: PageView(
-          controller: controller,
-          scrollDirection: Axis.horizontal,
-          children: [
-            // RecipeMenu(lang, '여행'),
-             RecipePageItem(classification("여행"), lang, '여행'),
-             RecipePageItem(classification("교통"), lang, '교통'),
-             RecipePageItem(classification("생활정보"), lang, '생활정보'),
-             RecipePageItem(classification("뉴스"), lang, '뉴스'),
-             RecipePageItem(classification("쇼핑"), lang, '쇼핑'),
-          ],
-        ),
-      ),
-    );
 
-    // return Scaffold(
-    //   backgroundColor: Colors.white,
-    //   appBar: _buildRecipeAppBar(lang),
-    //   // drawer: _buildRecipeEndDrawer(lang),
-    //   body: Padding(
-    //     padding: const EdgeInsets.symmetric(horizontal: 20),
-    //     child: new Column(children: <Widget>[
-    //       // RecipeMenu(lang, '여행'),
-    //       Expanded(
-    //           child: Container(
-    //             color: const Color.fromRGBO(235, 241, 243, 1.0),
-    //             child: PageView(
-    //               controller: controller,
-    //               scrollDirection: Axis.horizontal,
-    //               children: [
-    //                 // RecipeMenu(lang, '여행'),
-    //                 RecipePageItem(classification("여행"), lang, '여행'),
-    //                 RecipePageItem(classification("교통"), lang, '교통'),
-    //                 RecipePageItem(classification("생활정보"), lang, '생활정보'),
-    //                 RecipePageItem(classification("뉴스"), lang, '뉴스'),
-    //                 RecipePageItem(classification("쇼핑"), lang, '쇼핑'),
-    //               ],
-    //             ),
-    //           )
-    //       ),
-    //       // Expanded(child: RecipePageItem(classification("여행"), lang, '여행')),
-    //     ]),
-    //   ),
-    // );
-    //   body: Column(
-    //     children: [
-    //       Container(
-    //         color: Colors.white,
-    //         height: 100,
-    //         child: Padding(
-    //           padding: const EdgeInsets.symmetric(horizontal: 10),
-    //           child: new Column(children: <Widget>[
-    //             RecipeMenu(lang, '여행'),
-    //           ]),
-    //         ),
-    //       ),
-    //       Container(
-    //           color: Colors.white,
-    //           height: 5,
-    //           child: Padding(
-    //             padding: const EdgeInsets.symmetric(horizontal: 10),
-    //             child: new Column(children: <Widget>[
-    //               Expanded(
-    //                 child: PageView(
-    //                   controller: controller,
-    //                   scrollDirection: Axis.horizontal,
-    //                   children: [
-    //                     Row(
-    //                       children: <Widget>[
-    //                         Container(
-    //                           width: 60,
-    //                           height: 80,
-    //                           decoration: BoxDecoration(
-    //                             borderRadius: BorderRadius.circular(0),
-    //                             border: Border.all(color: Colors.black12),
-    //                           ),
-    //                         ),
-    //                         Container(
-    //                           width: 60,
-    //                           height: 80,
-    //                           decoration: BoxDecoration(
-    //                             borderRadius: BorderRadius.circular(0),
-    //                             border: Border.all(color: Colors.black12),
-    //                           ),
-    //                         ),
-    //                       ],
-    //                     ),
-    //                     Row(
-    //                       children: <Widget>[
-    //                         Image(
-    //                           image: AssetImage(
-    //                               'assets/images/menu/icon_menu_trans.png'),
-    //                           fit: BoxFit.fitHeight,
-    //                         ),
-    //                         Image(
-    //                           image: AssetImage(
-    //                               'assets/images/menu/icon_menu_trans.png'),
-    //                           fit: BoxFit.fitHeight,
-    //                         ),
-    //                       ],
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ]),
-    //           )),
-    //       Expanded(
-    //         child: Container(
-    //           color: const Color.fromRGBO(235, 241, 243, 1.0),
-    //           child: Padding(
-    //             padding: const EdgeInsets.symmetric(horizontal: 10),
-    //             child: new Column(children: <Widget>[
-    //               Expanded(
-    //                   child: RecipePageItem(classData, lang, '여행')),
-    //           // child: RecipePageItem(classification("여행"), lang, '여행')),
-    //             ]),
-    //           ),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5),
+            child: _buildTabBar()
+          ),
+
+          Expanded(
+            child: _buildTabBarView()
+          ),
+        ],
+      ),
+
+    );
   }
 
-  classification(data) {
-    List<Map<String, String>> returnData = [];
+  Widget _buildTabBar() {
+    return TabBar(
+      tabs: [
+        Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(bottom: 10),
+            child: new Column(children: <Widget>[
+              RecipeMenu('여행'),
+              _buildTabBarName('여행'),
+            ])),
+        Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(bottom: 10),
+            child: new Column(children: <Widget>[
+              RecipeMenu('교통'),
+              _buildTabBarName('교통'),
+            ])),
+        Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(bottom: 10),
+            child: new Column(children: <Widget>[
+              RecipeMenu('생활정보'),
+              _buildTabBarName('생활정보'),
+            ])),
+        Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(bottom: 10),
+            child: new Column(children: <Widget>[
+              RecipeMenu('뉴스'),
+              _buildTabBarName('뉴스'),
+            ])),
+        Container(
+            color: Colors.white,
+            margin: EdgeInsets.only(bottom: 10),
+            child: new Column(children: <Widget>[
+              RecipeMenu('쇼핑'),
+              _buildTabBarName('쇼핑'),
+            ])),
+      ],
 
-    // classData[data].forEach((i) {
-    //   if (i["kinds"] == data) {
-    //     returnData.add(i);
-    //   }
-    // });
+      // indicator: BoxDecoration(
+      //     color: Colors.greenAccent,
+      //     image: DecorationImage(
+      //         image: AssetImage('assets/images/menu/icon_menu_trip.png'),
+      //         fit: BoxFit.fitWidth)
+      // ),
 
-    for(var i=0; i <classData[data].length; i++) {
-      returnData.add(Map<String, String>.from(classData[data][i]));
+      // labelColor: Colors.black,
+      // isScrollable: true,
+      // unselectedLabelColor: Colors.black,
+      indicatorWeight: 4,
+      indicatorColor: const Color.fromRGBO(117, 148, 95, 1.0),
+
+
+      controller: _tabController,
+    );
+  }
+
+  _buildTransKrToEn(String tabName) {
+    var returnValue = 'trip';
+
+    if (tabName == '여행') {
+      returnValue = 'trip';
+    } else if (tabName == '교통') {
+      returnValue = 'trans';
+    } else if (tabName == '생활정보') {
+      returnValue = 'info';
+    } else if (tabName == '뉴스') {
+      returnValue = 'news';
+    } else if (tabName == '쇼핑') {
+      returnValue = 'shopping';
+    }
+    return returnValue;
+  }
+
+  Widget _buildTabBarName(String tabName) {
+    String returnName = tabName;
+    double reSizefont = 11;
+
+    if (lang == 'Foreigner') {
+      returnName = _buildTransKrToEn(tabName);
+      reSizefont = 9;
     }
 
-    return returnData;
+    return Text(
+      returnName,
+      textAlign: TextAlign.center,
+      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black, fontSize: reSizefont),
+    );
+  }
+
+  Widget _buildTabBarView() {
+    return TabBarView(
+      controller: _tabController,
+      children: [
+        Container(
+          color: const Color.fromRGBO(235, 241, 243, 1.0),
+          child: RecipePageItem(classData, lang, '여행'),
+        ),
+        Container(
+          color: const Color.fromRGBO(235, 241, 243, 1.0),
+          child: RecipePageItem(classData, lang, '교통'),
+        ),
+        Container(
+          color: const Color.fromRGBO(235, 241, 243, 1.0),
+          child: RecipePageItem(classData, lang, '생활정보'),
+        ),
+        Container(
+          color: const Color.fromRGBO(235, 241, 243, 1.0),
+          child: RecipePageItem(classData, lang, '뉴스'),
+        ),
+        Container(
+          color: const Color.fromRGBO(235, 241, 243, 1.0),
+          child: RecipePageItem(classData, lang, '쇼핑'),
+        ),
+      ],
+    );
   }
 
   AppBar _buildRecipeAppBar(String lang) {

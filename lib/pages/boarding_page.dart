@@ -21,7 +21,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
         kind == '내국인' ? makeDataSet(data['kr']) : makeDataSet(data['en']);
 
     Navigator.of(context).push(
-      MaterialPageRoute(builder: (_) => RecipePage(classData, kind)),
+      MaterialPageRoute(builder: (_) => RecipePage(classData, kind, '여행')),
     );
   }
 
