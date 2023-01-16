@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:allthathonorsclub_demo1/pages/recipe_Page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,33 +9,11 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  // DocumentSnapshot data = _onIntroEnd();
-  //
-  // Future<DocumentSnapshot> _onIntroEnd() async {
-  //   CollectionReference getMenuData = FirebaseFirestore.instance.collection("allthathonorsclub");
-  //   DocumentSnapshot data1 = await getMenuData.doc("menu").get();
-  //   return data1;
-  // }
 
   makeDataSet(toBeData) {
-    List<Map<String, String>> returnData = [];
+    Map<String, dynamic> returnData = Map<String, dynamic>.from(toBeData);
 
-
-    Map<String, dynamic> returnData1 = Map<String, dynamic>.from(toBeData);
-    // print(returnData1);
-    // print(toBeData);
-    // toBeData["여행"].forEach((i) {
-    //   returnData.add(Map<String, String>.from(i));
-    // });
-    // print(List<Map<String, List<Map<String, String>>>>.from(toBeData));
-
-    // for(var i=0; i <returnData1.length; i++) {
-    //   print(i);
-    //   print(returnData1[i]);
-    // }
-
-    // print(returnData);
-    return returnData1;
+    return returnData;
   }
 
   Widget makeButton(String assetName) {
@@ -99,7 +76,7 @@ class _MainPageState extends State<MainPage> {
               height: MediaQuery.of(context).size.height / 8,
               child: const Center(
                 child: Text(
-                  'Welcome to                      \nAll that Honors Club',
+                  'Welcome to                      \nAll That Honors Club',
                   style: TextStyle(
                     // fontWeight: FontWeight.bold,
                     fontSize: 30,
@@ -138,7 +115,7 @@ class _MainPageState extends State<MainPage> {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(const Color.fromRGBO(126, 167, 110, 1.0)),
                       ),
-                      child: const Text("All that honors club 홈페이지 바로가기 ⇀",
+                      child: const Text("All That Honors Club 홈페이지 바로가기 ⇀",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
@@ -167,9 +144,11 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  void launchURL(url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+  void launchURL(String targetUrl) async {
+    var url = Uri.parse(targetUrl);
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
     }else {
       throw '$url';
     }
