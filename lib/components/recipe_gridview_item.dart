@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:allthathonorsclub_demo1/components/recipe_list_item.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -82,13 +84,17 @@ class _GridViewItem extends State<RecipePageItem> {
       returnData.add(Map<String, String>.from(classData[data][i]));
     }
 
+    returnData.sort((a, b) => int.parse(a['seq']!).compareTo(int.parse(b['seq']!)));
+
     return returnData;
   }
 
-  void launchURL(url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
+  void launchURL(String targetUrl) async {
+    var url = Uri.parse(targetUrl);
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    }else {
       throw '$url';
     }
   }

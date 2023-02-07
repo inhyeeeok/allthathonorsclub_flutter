@@ -113,13 +113,14 @@ class _MainPageState extends State<MainPage> {
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30.0))),
                         backgroundColor:
-                            MaterialStateProperty.all<Color>(const Color.fromRGBO(126, 167, 110, 1.0)),
+                            // MaterialStateProperty.all<Color>(const Color.fromRGBO(126, 167, 110, 1.0)),
+                            MaterialStateProperty.all<Color>(Colors.white),
                       ),
                       child: const Text("All That Honors Club 홈페이지 바로가기 ⇀",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 15,
-                            color: Colors.white,
+                            color: const Color.fromRGBO(117, 148, 95, 1.0),
                           )),
                     ),
                   ],
