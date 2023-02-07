@@ -91,9 +91,11 @@ class RecipeListItem extends StatelessWidget {
     );
   }
 
-  void launchURL(url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
+  void launchURL(String targetUrl) async {
+    var url = Uri.parse(targetUrl);
+
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
     }else {
       throw '$url';
     }
